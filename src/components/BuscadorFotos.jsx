@@ -5,14 +5,13 @@ import { GridContainer } from "./GridContainer";
 export const BuscadorFotos = () => {
 
     const [arrayCateg, setArrayCateg] = useState([]);
-    // const [pics, setPics] = useState([]);
-    // console.log(arrayCateg)
-    const newCatOn = (categ) => {
-        
+    
+    const newCatOn = async (categ) => {
+
         const encontrada = arrayCateg.some(item => item.toLowerCase() === categ.toLowerCase());
         if (encontrada) return
-        // setArrayCateg([...arrayCateg, categ]);
-        setArrayCateg(initialCats => [ categ, ...initialCats]);
+        setArrayCateg(initialCats => [categ, ...initialCats]);
+
     };
 
     return (

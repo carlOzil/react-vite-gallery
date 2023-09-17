@@ -1,19 +1,22 @@
 
-export const consultaFetch = async (busqueda) => {
-const url = import.meta.env.VITE_APP_URL;
-const auth = import.meta.env.VITE_APP_AUTH
+export const consultaFetch = async (categ) => {
+
+    const url = import.meta.env.VITE_APP_URL;
+    const pexelsToken = import.meta.env.VITE_APP_AUTH;
+
     try {
-        const respons = await fetch(`${url}${busqueda}`, {
+        const respons = await fetch(`${url}${categ}`, {
             headers: {
-                'Authorization': `${auth}`,
+                'Authorization': `${pexelsToken}`,
             }
         });
 
         if (respons.ok) {
-            const dataFetch = await respons.json();
+            const data = await respons.json();
+        
             return {
                 ok: true,
-                dataFetch
+                data
             };
         } else {
             throw new Error('El servidor no responde!');
@@ -21,7 +24,9 @@ const auth = import.meta.env.VITE_APP_AUTH
     } catch (err) {
         return {
             ok: false,
-            dataFetch
+            err
         };
     };
 };
+
+// console.log(consultaFetch('casa'))

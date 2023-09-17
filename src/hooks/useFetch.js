@@ -1,18 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import { consultaFetch } from '../helpers/consultaFetch';
+import React, { useEffect, useState } from 'react';
+import { getPics } from '../helpers/getPics';
 
-export const useFetch = () => {
 
-  const [dataFound, setDataFound] = useState({});
-  const [cargando, setCargando] = useState(true);
+export const useFetch = (categ) => {
+
+  const [arrayPics, setArrayPics] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getArrayPics = async () => {
+    const newArrayPics = await getPics(categ);
+    setArrayPics(newArrayPics);
+    setIsLoading(false);
+  };
+
 
   useEffect(() => {
-    
-      
-    return () => {
+    getArrayPics();
 
-    }
   }, [])
-  
-    return
+
+  return {
+    arrayPics,
+    isLoading
+  }
 }

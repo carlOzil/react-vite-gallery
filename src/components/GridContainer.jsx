@@ -1,16 +1,18 @@
 import React from 'react';
 import { CardPic } from './CardPic';
+import { useFetch } from '../hooks/useFetch';
 
 export const GridContainer = ({ categ }) => {
 
-    const arrayPics = [1, 2, 3, 4];
+    const { arrayPics, isLoading } = useFetch(categ)
 
     return (
-        <section className="border mb-5">
-            <h2>{categ}</h2>
+        <section className="row mb-5">
+            <h2 className='h1'>{categ}</h2>
             {
-                arrayPics.map(pic => (
-                    <CardPic key={pic}/>
+                (isLoading) ? <p className='alert alert-success'>Cargando...</p> :
+                arrayPics && arrayPics.map((pic) => (
+                    <CardPic key={pic.id} {...pic}/>
                 ))
             }
         </section>

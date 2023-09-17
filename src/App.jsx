@@ -1,5 +1,6 @@
 import { BuscadorFotos } from "./components/BuscadorFotos";
-
+// import './helpers/getPics'
+// import './helpers/consultaFetch'
 
 function App() {
 
@@ -10,7 +11,7 @@ function App() {
         <p className="display-3">Práctica React Pexels</p>
       </header>
 
-      <main className="container my-5">
+      <main className="bg-dark text-light container my-5">
       <BuscadorFotos/>
     </main>
 

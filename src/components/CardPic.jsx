@@ -1,12 +1,12 @@
 import React from 'react'
 
-export const CardPic = ({pic}) => {
+export const CardPic = ({ photographer, photographer_url, url, alt }) => {
     return (
-        <article className="border mb-5">
-            <h3>{pic}</h3>
-            <p>Autor{pic}</p>
-            <img src="" alt="" />
-        </article>
+        <div className="bg-dark card h-100 col-md-4 mb-3">
+            <h3 className='text-warning'>{photographer}</h3>
+            <a href={photographer_url} className='link-warning'>Web del autor</a>
+            <div><img src={url} alt={alt} className="card-img-top img-fluid"/></div>
+        </div>
     );
 };
 
