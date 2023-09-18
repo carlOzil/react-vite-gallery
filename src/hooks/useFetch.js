@@ -6,21 +6,45 @@ export const useFetch = (categ) => {
 
   const [arrayPics, setArrayPics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(null);
+  const [pag, setPag] = useState(1);
 
   const getArrayPics = async () => {
-    const newArrayPics = await getPics(categ);
-    setArrayPics(newArrayPics);
-    setIsLoading(false);
+
+    const pics = await getPics(categ, pag);
+
+    if (pics) {
+      setArrayPics(pics);
+      setIsLoading(false);
+
+    } else {
+      setIsError(err.message);
+      
+    };
   };
 
+  const handlePrev = () => {
+    setPag(pag - 1);
+
+  };
+
+  const handleNext = () => {
+    setPag(pag + 1);
+
+  };
 
   useEffect(() => {
     getArrayPics();
 
-  }, [])
+  }, [pag]);
 
   return {
     arrayPics,
-    isLoading
-  }
-}
+    isLoading,
+    isError,
+    pag,
+    handlePrev,
+    handleNext
+
+  };
+};

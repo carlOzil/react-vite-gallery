@@ -15,8 +15,9 @@ export const Formulario = ({ newCatOn }) => {
                 className="form-control"
                 value={data}
                 onChange={handleChange}
+                required
             />
-            <input type="submit" className="form-control btn btn-success" value="Find!" />
+            <input type="submit" className="form-control btn btn-warning" value="Find!" />
         </form>
     );
 };

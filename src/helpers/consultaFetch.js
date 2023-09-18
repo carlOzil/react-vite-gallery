@@ -1,11 +1,11 @@
 
-export const consultaFetch = async (categ) => {
+export const consultaFetch = async (categ, pag) => {
 
     const url = import.meta.env.VITE_APP_URL;
     const pexelsToken = import.meta.env.VITE_APP_AUTH;
 
     try {
-        const respons = await fetch(`${url}${categ}`, {
+        const respons = await fetch(`${url}search?query=${categ}&page=${pag}&per_page=3`, {
             headers: {
                 'Authorization': `${pexelsToken}`,
             }
@@ -13,7 +13,7 @@ export const consultaFetch = async (categ) => {
 
         if (respons.ok) {
             const data = await respons.json();
-        
+
             return {
                 ok: true,
                 data

@@ -1,10 +1,10 @@
 
 import { consultaFetch } from './consultaFetch';
 
-export const getPics = async (categ) => {
-    const { data } = await consultaFetch(categ);
+export const getPics = async (categ, pag) => {
+    const { data } = await consultaFetch(categ, pag);
     const { photos } = data
-   
+    
     const pics = photos.map((pic) => ({
         id: pic.id,
         photographer: pic.photographer,
@@ -14,8 +14,8 @@ export const getPics = async (categ) => {
 
     }));
 
+    return pics;
 
-    return pics
 };
 
 // console.log(getPics('car'));
